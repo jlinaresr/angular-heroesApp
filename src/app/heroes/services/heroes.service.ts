@@ -25,4 +25,18 @@ export class HeroesService {
     return this.http.get<Heroe[]>(`${this.baseUrl}/heroes?q=${termino}&_limit=6`);
   }
 
+  agregarHeroe( heroe: Heroe) : Observable<Heroe> {
+    // Así cae como un x.www.form.urlencoded
+    return this.http.post<Heroe>(`${this.baseUrl}/heroes`, heroe);
+  }
+
+  actualizarHeroe( heroe: Heroe) : Observable<Heroe> {
+    // Así cae como un x.www.form.urlencoded
+    return this.http.put<Heroe>(`${this.baseUrl}/heroes/${heroe.id}`, heroe);
+  }
+
+  eliminarHeroe( id: string) : Observable<{}> {
+    
+    return this.http.delete<{}>(`${this.baseUrl}/heroes/${id}`);
+  }
 }
